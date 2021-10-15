@@ -76,7 +76,7 @@ AddEventHandler('qb-communityservice:server:sendToCommunityService', function(ta
     local Ply = QBCore.Functions.GetPlayer(target)
     local citizenid = Ply.PlayerData.citizenid
     
-    exports.oxmysql:insert('INSERT INTO communityservice (citizenid, actions_remaining) VALUES (?, ?) ON DUPLICATE KEY UPDATE actions_remaining = ?', {citizenid, actions_count})
+    exports.oxmysql:insert('INSERT INTO communityservice (citizenid, actions_remaining) VALUES (:id, :actions) ON DUPLICATE KEY UPDATE actions_remaining = :actions', {id = citizenid, actions = actions_count})
     TriggerClientEvent('qb-communityservice:client:inCommunityService', target, actions_count)
 end)
 
