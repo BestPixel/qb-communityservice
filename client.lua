@@ -77,6 +77,9 @@ Citizen.CreateThread(function()
                         end
                         Wait(5000)
                         ClearPedTasks(ped)
+			if actionsRemaining < 1 then
+                            TriggerServerEvent("qb-communityservice:server:finishCommunityService")
+                        end
                         goto start_over
                     end
                 end
